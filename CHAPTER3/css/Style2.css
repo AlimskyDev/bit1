@@ -1,0 +1,62 @@
+.Header {
+    display: flex;
+    background-color: brown;
+    color: white;
+    padding: 10px 15px;
+}
+.HeaderLogo {
+    display: flex;
+}
+.HeaderLogoA {
+    font-weight: 600;
+}
+.HeaderLogoB {
+    margin-left: 5px;
+}
+.Headerlinks {
+    margin-left: auto;
+}
+.Headerlinks a{
+    text-decoration: none;
+    color:white;
+    margin-left: 5px;
+}
+
+
+.NewsMain {
+    display: flex;
+    padding: 20px;
+    background-color:aquamarine;
+    margin-top: 20px;
+}
+.NewsMainImg {
+    display: flex;
+    align-items: center;
+}
+.NewsMainDescr {
+    margin-left: 20px;
+}
+
+
+.Separator {
+    text-align: center;
+}
+
+
+.Carusel {
+    display: flex;
+    justify-content: space-between;
+}
+.Carusel_1 {
+    width: 24%;
+}
+
+.Carusel img {
+    width: 100%;
+}
+.Carusel button {
+    border: none;
+    background-color:brown;
+    color: white;
+    height: 30px;
+}
