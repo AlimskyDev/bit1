@@ -1,0 +1,93 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h3 {
+    font-size: 1.17em;
+    margin: 0;
+    font-weight: bold;
+    font-family:Verdana, sans-serif;
+}
+a {
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+}
+
+
+.Header {
+    display: flex;
+    background-color:rgb(18, 18, 90);
+    color: white;
+    padding: 10px;
+    margin: 0 auto;
+    width: 100%;
+}
+.Links {
+    margin: auto;
+    margin-right: 20px;
+}
+.Links a {
+    font-size: 12px;
+}
+
+.Wrapper {
+    display: flex;
+}
+
+.Auth a {
+    color:blue;
+    font-size: 1rem;
+}
+.Auth {
+    padding: 10px;
+    height: 100%;
+    /* background-color:rgb(207, 246, 34); */
+    
+}
+button {
+    border: none;
+    background-color:rgb(0, 59, 14);
+    color: white;
+    width: 80px;
+    height: 25px;
+}
+
+
+
+.News {
+    /* background-color:rgb(60, 255, 39); */
+    width: 65%;
+    padding: 10px;
+    margin: 0 auto;
+}
+.News img{
+    width: 100%;
+}
+.News span {
+    font-weight: 600;
+}
+
+.Table {
+    margin: 5px;
+}
+
+.Table td {
+    padding: 5px;
+}
+.TableOneRow {
+    background-color:black;
+    color: white;
+}
+.TableTwoRow {
+    background-color:rgb(0, 59, 14);
+    color: white;
+}
+.TableTreeRow {
+    background-color:rgb(62, 191, 92);
+}
+.TableFourRow {
+    background-color:rgb(255, 154, 154);
+}
+
