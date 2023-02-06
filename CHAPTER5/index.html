@@ -53,15 +53,24 @@
     // if (c>4000) alert(c-c/10) 
     // else alert(c)
 
-    let money = prompt("Insert numbers of money")
-    let currency = prompt("INSERT YOUR AMOUNT IN KZT:" + "\n" +
-                    "1- CONVERT TO USD" + "\n" +
-                    "2- CONVERT TO EUR" + "\n" +
-                    "3- CONVERT TO GBP");
-    if (currency==1) alert(money/380 + " USD")
-    else if (currency==2) alert(money/430 + " EUR")
-    else if (currency==3) alert(money/480 + " GBP")
+    // let money = prompt("Insert numbers of money")
+    // let currency = prompt("INSERT YOUR AMOUNT IN KZT:" + "\n" +
+    //                 "1- CONVERT TO USD" + "\n" +
+    //                 "2- CONVERT TO EUR" + "\n" +
+    //                 "3- CONVERT TO GBP");
+    // if (currency==1) alert(money/380 + " USD")
+    // else if (currency==2) alert(money/430 + " EUR")
+    // else if (currency==3) alert(money/480 + " GBP")
 
+    let login = "user";
+    let pass = "qwerty";
+    let authLogin = prompt("Insert Login");
+    let authPass = prompt("Insert password");
+    if (login==authLogin && pass==authPass) 
+    alert("Authentication completed")
+    else alert("Invalid login or password")
+
+    
   </script>
 </body>
 </html>
