@@ -114,17 +114,23 @@
     // alert("YES")
     // else alert("NO")
 
-    const tenge = parseInt(prompt("Insert tenge"))
-    const dollarRate = 380
-    let dollars = tenge / dollarRate
-    dollars = Math.floor(dollars)
-    let cents = (tenge - dollars * dollarRate) / dollarRate * 100
-    cents = Math.round(cents)
-    let result = dollars + " USD"
-    if (cents !== 0) alert (result += " and " + cents + " cents")
-    else alert(result = "ONLY " + result)
+    // const tenge = parseInt(prompt("Insert tenge"))
+    // const dollarRate = 380
+    // let dollars = tenge / dollarRate
+    // dollars = Math.floor(dollars)
+    // let cents = (tenge - dollars * dollarRate) / dollarRate * 100
+    // cents = Math.round(cents)
+    // let result = dollars + " USD"
+    // if (cents !== 0) alert (result += " and " + cents + " cents")
+    // else alert(result = "ONLY " + result)
     
-    
+    const min = parseInt(prompt("Minutes"))
+    const minInHour = 60;
+    let hour = Math.floor(min / minInHour)
+    let minutes = min%minInHour
+    if (minutes==0) alert("ONLY "+hour+" HOURS")
+    else alert(hour+"HOURS and "+minutes+" MINUTES")
+
 
 </script>
 </body>
