@@ -107,12 +107,23 @@
     //   else alert("You are boxer or tennis player")
     // }
 
-    let a = parseInt(prompt("side 1"))
-    let b = parseInt(prompt("side 2"))
-    let c = parseInt(prompt("side 3"))
-    if (a+b>c && a+c>b && c+b>a) 
-    alert("YES")
-    else alert("NO")
+    // let a = parseInt(prompt("side 1"))
+    // let b = parseInt(prompt("side 2"))
+    // let c = parseInt(prompt("side 3"))
+    // if (a+b>c && a+c>b && c+b>a) 
+    // alert("YES")
+    // else alert("NO")
+
+    const tenge = parseInt(prompt("Insert tenge"))
+    const dollarRate = 380
+    let dollars = tenge / dollarRate
+    dollars = Math.floor(dollars)
+    let cents = (tenge - dollars * dollarRate) / dollarRate * 100
+    cents = Math.round(cents)
+    let result = dollars + " USD"
+    if (cents !== 0) alert (result += " and " + cents + " cents")
+    else alert(result = "ONLY " + result)
+    
     
 
 </script>
