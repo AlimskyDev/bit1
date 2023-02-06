@@ -82,31 +82,38 @@
     // else if (balls>=50 && balls<60) alert("d")
     // else alert("F")
 
-    let branch = parseInt(prompt("Choose your branch:"+" \n"+
-                                 "1 - Science"+" \n"+ 
-                                 "2 - Humanitarian subjects"+" \n"+
-                                 "3 - Art, 4 - Sport:"))
-    if (branch==1) {
-      let science = parseInt(prompt("1 - Math, 2 - Physics:"))
-      if (science==1) alert("You are Financier")
-      else alert("You are Engineer")
-    }
-    if (branch==2) {
-      let Humanitarian = parseInt(prompt("1 - History, 2 - Foreign Languages:"))
-      if (Humanitarian==1) alert("You are Historic or Diplomat")
-      else alert("You are Translator")
-    }
-    if (branch==3) {
-      let Art = parseInt(prompt("1 - Drawing, 2 -Singing:"))
-      if (Art==1) alert("You are Painter or Architect")
-      else alert("You are Singer or Tamada")
-    }
-    if (branch==4) {
-      let Sport = parseInt(prompt("1 - Team, 2 - Individual:"))
-      if (Sport==1) alert("You are footballer or Basketball player")
-      else alert("You are boxer or tennis player")
-    }
+    // let branch = parseInt(prompt("Choose your branch:"+" \n"+
+    //                              "1 - Science"+" \n"+ 
+    //                              "2 - Humanitarian subjects"+" \n"+
+    //                              "3 - Art, 4 - Sport:"))
+    // if (branch==1) {
+    //   let science = parseInt(prompt("1 - Math, 2 - Physics:"))
+    //   if (science==1) alert("You are Financier")
+    //   else alert("You are Engineer")
+    // }
+    // if (branch==2) {
+    //   let Humanitarian = parseInt(prompt("1 - History, 2 - Foreign Languages:"))
+    //   if (Humanitarian==1) alert("You are Historic or Diplomat")
+    //   else alert("You are Translator")
+    // }
+    // if (branch==3) {
+    //   let Art = parseInt(prompt("1 - Drawing, 2 -Singing:"))
+    //   if (Art==1) alert("You are Painter or Architect")
+    //   else alert("You are Singer or Tamada")
+    // }
+    // if (branch==4) {
+    //   let Sport = parseInt(prompt("1 - Team, 2 - Individual:"))
+    //   if (Sport==1) alert("You are footballer or Basketball player")
+    //   else alert("You are boxer or tennis player")
+    // }
 
+    let a = parseInt(prompt("side 1"))
+    let b = parseInt(prompt("side 2"))
+    let c = parseInt(prompt("side 3"))
+    if (a+b>c && a+c>b && c+b>a) 
+    alert("YES")
+    else alert("NO")
+    
 
 </script>
 </body>
