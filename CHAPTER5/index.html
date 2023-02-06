@@ -62,15 +62,18 @@
     // else if (currency==2) alert(money/430 + " EUR")
     // else if (currency==3) alert(money/480 + " GBP")
 
-    let login = "user";
-    let pass = "qwerty";
-    let authLogin = prompt("Insert Login");
-    let authPass = prompt("Insert password");
-    if (login==authLogin && pass==authPass) 
-    alert("Authentication completed")
-    else alert("Invalid login or password")
+    // let login = "user";
+    // let pass = "qwerty";
+    // let authLogin = prompt("Insert Login");
+    // let authPass = prompt("Insert password");
+    // if (login==authLogin && pass==authPass) 
+    // alert("Authentication completed")
+    // else alert("Invalid login or password")
 
-    
+    let year = parseInt(prompt("Insert year"));
+    if (year%4==0 && year%100!=0 || year%400==0)
+    alert("YES") 
+    else alert("NO")
   </script>
 </body>
 </html>
