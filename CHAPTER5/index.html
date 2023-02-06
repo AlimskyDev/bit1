@@ -47,11 +47,20 @@
     // if (b/a<=2.15) alert("YES, YOU CAN REACH")
     // else alert("NO, YOU CAN NOT REACH")
 
-    let a = parseInt(prompt("Numbers of Wiskas"));
-    let b = 120;
-    let c = a * b;
-    if (c>4000) alert(c-c/10) 
-    else alert(c)
+    // let a = parseInt(prompt("Numbers of Wiskas"));
+    // let b = 120;
+    // let c = a * b;
+    // if (c>4000) alert(c-c/10) 
+    // else alert(c)
+
+    let money = prompt("Insert numbers of money")
+    let currency = prompt("INSERT YOUR AMOUNT IN KZT:" + "\n" +
+                    "1- CONVERT TO USD" + "\n" +
+                    "2- CONVERT TO EUR" + "\n" +
+                    "3- CONVERT TO GBP");
+    if (currency==1) alert(money/380 + " USD")
+    else if (currency==2) alert(money/430 + " EUR")
+    else if (currency==3) alert(money/480 + " GBP")
 
   </script>
 </body>
