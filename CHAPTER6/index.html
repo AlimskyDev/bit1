@@ -39,16 +39,33 @@
     // }
     // console.log(count, count/arr.length);
 
-    let n = parseInt(prompt("Insert number"));
-    let arr = [];
-    for (let i=0; i<n; i++) {
-      arr[i] = parseInt(prompt("insert num"));
-    } 
-    let count = 0;
-    for (let i=0; i<arr.length; i++) {
-      console.log(arr[i]*arr[i]);
-    }
+    // let n = parseInt(prompt("Insert number"));
+    // let arr = [];
+    // for (let i=0; i<n; i++) {
+    //   arr[i] = parseInt(prompt("insert num"));
+    // } 
+    // let count = 0;
+    // for (let i=0; i<arr.length; i++) {
+    //   console.log(arr[i]*arr[i]);
+    // }
 
+    let login = prompt("Name");
+    let password = prompt("Password");
+    users = [
+      {"login":"ilyas", "password": "qwerty"},
+      {"login":"eldar", "password": "qqqqq"},
+      {"login":"assylkhan", "password": "qweqwe"},
+      {"login":"anel", "password": "asdasd"},
+      {"login":"alibek", "password": "aaaaaa"}
+    ];
+    let auth = false;
+    for(let i=0;i<users.length;i++){
+      if (users[i]["login"]===login && users[i]["password"]===password)
+        auth = true;
+    } 
+    if (auth) console.log("Welcome, you are authenticated")
+    else console.log("User not found")
+    
 
   </script>
 </body>
