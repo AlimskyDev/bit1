@@ -49,24 +49,42 @@
     //   console.log(arr[i]*arr[i]);
     // }
 
-    let login = prompt("Name");
-    let password = prompt("Password");
-    users = [
-      {"login":"ilyas", "password": "qwerty"},
-      {"login":"eldar", "password": "qqqqq"},
-      {"login":"assylkhan", "password": "qweqwe"},
-      {"login":"anel", "password": "asdasd"},
-      {"login":"alibek", "password": "aaaaaa"}
-    ];
-    let auth = false;
-    for(let i=0;i<users.length;i++){
-      if (users[i]["login"]===login && users[i]["password"]===password)
-        auth = true;
-    } 
-    if (auth) console.log("Welcome, you are authenticated")
-    else console.log("User not found")
+    // let login = prompt("Name");
+    // let password = prompt("Password");
+    // users = [
+    //   {"login":"ilyas", "password": "qwerty"},
+    //   {"login":"eldar", "password": "qqqqq"},
+    //   {"login":"assylkhan", "password": "qweqwe"},
+    //   {"login":"anel", "password": "asdasd"},
+    //   {"login":"alibek", "password": "aaaaaa"}
+    // ];
+    // let auth = false;
+    // for(let i=0;i<users.length;i++){
+    //   if (users[i]["login"]===login && users[i]["password"]===password)
+    //     auth = true;
+    // } 
+    // if (auth) console.log("Welcome, you are authenticated")
+    // else console.log("User not found")
     
-
+    let arr = [
+      {"name":"Harry Potter and the Philosopher's Stone",
+       "autor":"Joanne Rowling",
+       "ISBN": "222322",
+       "price":"50$"},
+      {"name":"Harry Potter and the Chamber of Secrets",
+       "autor":"Joanne Rowling",
+       "ISBN": "222332",
+       "price":"40$"},
+      {"name":"Harry Potter and the Prisoner of Azkaban",
+       "autor":"Joanne Rowling",
+       "ISBN": "452323",
+       "price":"55$"},
+    ]
+    let name = prompt("Insert name");
+    for (let i=0; i<arr.length; i++) {
+      if (arr[i]["name"]===name)
+      console.log(arr[i]["name"]+" - "+arr[i]["autor"]+" - "+arr[i]["ISBN"]+" - "+arr[i]["price"])
+    }
   </script>
 </body>
 </html>
