@@ -8,22 +8,43 @@
 </head>
 <body>
   <script>
-    let arr = [];
-    let n = parseInt(prompt("Size of massiv"))
-    for (let i=0; i<n; i++)
-      arr[i] = parseInt(prompt("Insert number"))
-    let m = parseInt(prompt("Search number"))
-    let b = false;
-    let index = 0;
-    for (let i=0; i<arr.length; i++) {
-      if (arr[i]===m) {
-        b = true;
-        index = arr.indexOf(m)
-      }
+    // let arr = [];
+    // let n = parseInt(prompt("Size of massiv"))
+    // for (let i=0; i<n; i++)
+    //   arr[i] = parseInt(prompt("Insert number"))
+    // let m = parseInt(prompt("Search number"))
+    // let b = false;
+    // let index = 0;
+    // for (let i=0; i<arr.length; i++) {
+    //   if (arr[i]===m) {
+    //     b = true;
+    //     index = arr.indexOf(m)
+    //   }
+    // }
+    // if (b) console.log("YES "+"Index of number "+index)
+    // else console.log("No")
+    
+    let arr = []
+    let e = parseInt(prompt("Insert number"))
+    
+    while (e!==0) {
+      console.log(arr[e])
+      arr.push(e)
+      e = parseInt(prompt("Insert number"))
     }
-    if (b) console.log("YES "+"Index of number "+index)
-    else console.log("No")
 
+    let count = 1;
+    for (let i=0; i<arr.length; i++) {
+      count *= arr[i]
+    }
+
+    let w = Math.pow(count, 1 / arr.length)
+    let r = w.toFixed(3)
+    alert(r)
+
+
+
+    
   </script>
 </body>
 </html>
