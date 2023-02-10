@@ -43,18 +43,32 @@
     // alert(r)
 
 
-    let arr = []
-    let e = parseInt(prompt("Insert number"))
+    // let arr = []
+    // let e = parseInt(prompt("Insert number"))
     
-    while (e!==0) {
-      arr.push(e)
-      e = parseInt(prompt("Insert number"))
+    // while (e!==0) {
+    //   arr.push(e)
+    //   e = parseInt(prompt("Insert number"))
+    // }
+    // for (let i=0; i<arr.length; i++) {
+    //   if (arr[i]>0) {
+    //     console.log(arr[i])
+    //   }
+    // }
+
+
+    let num = parseInt(prompt("Enter a number"))
+    let arr = [];
+    for (let i=0; i<num; i++) {
+      arr[i] = parseInt(prompt(`Enter a number in Array[${num}]`))
     }
-    for (let i=0; i<arr.length; i++) {
-      if (arr[i]>0) {
-        console.log(arr[i])
+    let count = arr[0];
+    for (let i=1; i<arr.length; i++) {
+      if (arr[i]!==0) {
+        count *= arr[i];
       }
     }
+    console.log(count);
     
   </script>
 </body>
