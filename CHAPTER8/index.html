@@ -7,6 +7,25 @@
   <title>Document</title>
 </head>
 <body>
+  <h2>Enter Your Bank Card Details</h2>
+  <form id="myForm">
+    <label>Card Number:</label>
+
+    <input type="text" name="cardNumber1" size="4">
+    <input type="text" name="cardNumber2" size="4">
+    <input type="text" name="cardNumber3" size="4">
+    <input type="text" name="cardNumber4" size="4"> <br><br>
+  
+    <label>Full Name:</label>
+    <input type="text" name="fullName"> <br><br>
+  
+    <label>CVV:</label>
+    <input type="password" name="cvv"> <br><br>
+  
+    <button type="button" onclick="check()">Submit</button> <br><br>
+
+    <div id="result"></div>
+  </form>
 
   <script>
     // function boo(login, password) { 
@@ -23,26 +42,89 @@
     //   }
     // }
       
-    buttonPlus.addEventListener('click', () => numbers("+"));
-    buttonMinus.addEventListener('click', () => numbers("-"));
+    // buttonPlus.addEventListener('click', () => numbers("+"));
+    // buttonMinus.addEventListener('click', () => numbers("-"));
    
-    function numbers(sym) {
-      let num = parseInt(number.innerText);
-      if (sym==="+") {
-        num++;
-        number.innerText = num;
-      }
-      if (sym==="-") {
-        num--;
-        number.innerText = num;
-      }
-    }
+    // function numbers(sym) {
+    //   let num = parseInt(number.innerText);
+    //   if (sym==="+") {
+    //     num++;
+    //     number.innerText = num;
+    //   }
+    //   if (sym==="-") {
+    //     num--;
+    //     number.innerText = num;
+    //   }
+    // }
     
 
 
 
+    
+  const cards = [
+    { cardNumber: "1234123412341234", fullName: "John Doe", cvv: "123" },
+    { cardNumber: "2345678923456789", fullName: "Jane Doe", cvv: "456" },
+    { cardNumber: "3456789034567890", fullName: "Jim Brown", cvv: "789" }
+  ];
+  
+  let cardNum1 = myForm.elements.cardNumber1;
+  let cardNum2 = myForm.elements.cardNumber2;      
+  let cardNum3 = myForm.elements.cardNumber3;
+  let cardNum4 = myForm.elements.cardNumber4;
+  let name = myForm.elements.fullName;
+  let cvv = myForm.elements.cvv;
 
-
+  function check(){
+      if (cardNum1.value === '' && cardNum2.value === '' &&
+        cardNum3.value === '' && cardNum4.value === '') {
+      result.innerText = 'Enter card number';
+    } else if (name.value === '') {
+      result.innerHTML = 'Enter your name';
+    } else if (cvv.value === '') {
+      result.innerHTML = 'Enter cvv code';
+    } else if (cardNum1.value != '' && 
+               cardNum2.value != '' &&
+               cardNum3.value != '' && 
+               cardNum4.value != '' &&
+               name.value != '' &&
+               cvv.value != '') { 
+                let auth = false;
+                for (let u of cards) {
+                  if (cardNum1.value+cardNum2.value+cardNum3.value+
+                      cardNum4.value === u.cardNumber &&
+                      name.value === u.fullName && cvv.value === u.cvv){
+                        auth = true;
+                        result.innerText = "Welcome " + u.fullName;
+                        break;
+                      }
+                      if (!auth) {
+                        cardNum1.focus();
+                        result.innerText = 'No user with such login and password';
+                      }
+                      cardNum1.value = '';
+                      cardNum2.value = '';      
+                      cardNum3.value = '';
+                      cardNum4.value = '';
+                      name.value = '';
+                      cvv.value = '';
+                }
+               }
+  }
+  function checkFields(){
+    if (event.target == cardNum1 ||
+        event.target == cardNum2 ||
+        event.target == cardNum3 ||
+        event.target == cardNum4 ||
+        event.target == name ||
+        event.target == cvv) result.innerText = '';
+  }
+  cardNum1.onfocus = checkFields;
+  cardNum2.onfocus = checkFields;
+  cardNum3.onfocus = checkFields;
+  cardNum4.onfocus = checkFields;
+  name.onfocus = checkFields;
+  cvv.onfocus = checkFields;
+    
   </script>
 </body>
 </html>
