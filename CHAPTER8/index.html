@@ -7,22 +7,42 @@
   <title>Document</title>
 </head>
 <body>
-  <script>
-    function boo(login, password) { 
-      for (let i=0; i<arr.length; i++) { 
-        if (arr[i]["login"]===log && arr[i]["password"]===pass) { 
-          form.style.display = 'none';
-          auth.style.display = 'block';
-          console.log("true") 
-        } else { 
-          login.style.borderColor = 'red';
-          password.style.borderColor = 'red';
-          console.log("false") 
-        } 
-      } 
-    } 
 
+  <script>
+    // function boo(login, password) { 
+    //   for (let i=0; i<arr.length; i++) { 
+    //     if (arr[i]["login"]===log && arr[i]["password"]===pass) { 
+    //       form.style.display = 'none';
+    //       auth.style.display = 'block';
+    //       console.log("true") 
+    //     } else { 
+    //       login.style.borderColor = 'red';
+    //       password.style.borderColor = 'red';
+    //       console.log("false")
+    //     }
+    //   }
+    // }
+      
+    buttonPlus.addEventListener('click', () => numbers("+"));
+    buttonMinus.addEventListener('click', () => numbers("-"));
+   
+    function numbers(sym) {
+      let num = parseInt(number.innerText);
+      if (sym==="+") {
+        num++;
+        number.innerText = num;
+      }
+      if (sym==="-") {
+        num--;
+        number.innerText = num;
+      }
+    }
     
+
+
+
+
+
   </script>
 </body>
 </html>
