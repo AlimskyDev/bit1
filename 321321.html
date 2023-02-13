@@ -1,0 +1,607 @@
+Работа с формой (свойства и события)
+
+Формы в документе входят в специальную коллекцию document.forms. Для получения конкретной формы мы можем найти его по имени name. Когда мы уже получили форму, любой элемент доступен в именованной коллекции form.elements. Рассмотрим все это на примере:
+
+ 
+
+index.html
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <title>DOM events</title>
+
+</head>
+
+<body>
+
+  <form name="myform">
+
+    <input name="one" value="1">
+
+    <input name="two" value="2">
+
+  </form>
+
+ 
+
+  <script>
+
+    let form = document.forms.myform; // получаем объект формы по имени(name)
+
+    let elem = form.elements.one; // получаем элемент внутри формы с именем one
+
+    console.log('element value: ' + elem.value); // выведет element value: 1
+
+  </script>
+
+</body>
+
+</html>
+
+ 
+
+Результат кода:
+
+
+
+Конечно можно еще объект формы достать напрямую через его id. Но выше показан лишь еще один способ как это можно сделать.
+
+ 
+
+События focus/blur
+
+ 
+
+Событие focus вызывается в момент фокусировки, а blur – когда элемент теряет фокус. Давайте рассмотрим не примере ниже:
+
+ 
+
+index.html
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <title>DOM events</title>
+
+  <style>
+
+    .invalid { border-color: red; }
+
+    div { color: red }
+
+  </style>
+
+</head>
+
+<body>
+
+  Your email: 
+
+  <input type="email" id="emailInput">
+
+  <div id="error"></div>
+
+ 
+
+  <script>
+
+     function callOnBlur() {
+
+      if (!emailInput.value.includes('@')) { // если значение НЕ содержит символ @
+
+        emailInput.classList.add('invalid'); // добавить класс invalid 
+
+        error.innerHTML = 'Please enter right email.'; // показываем сообщение о правильном вводе
+
+      }
+
+    }
+
+    emailInput.onblur = callOnBlur; // на событие onblur зовем callOnBlur
+
+ 
+
+     function callOnFocus() {
+
+      if (this.classList.contains('invalid')) { // если у элемента есть класс invalid
+
+        this.classList.remove('invalid'); // то убираем данный класс
+
+        error.innerHTML = ""; // убираем сообщение о правильном вводе
+
+      }
+
+    }
+
+    emailInput.onfocus = callOnFocus; // на событие onfocus зовем callOnFocus
+
+  </script>
+
+</body>
+
+</html>
+
+ 
+
+Результат кода если ввести bitlab и убрать фокус с элемента ввода:
+
+
+
+А потом если обратно фокусироваться на элементе ввода то стиль и сообщение исчезнут:
+
+
+
+Если дописать правильный email(с символом @) и убрать фокус с элемента ввода то сообщение не выводится:
+
+
+
+ 
+
+Событие change
+
+ 
+
+Событие change срабатывает по окончании изменения элемента. Давайте рассмотрим на примере:
+
+index.html
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <title>Form events</title>
+
+</head>
+
+<body>
+
+  <select id="elem">
+
+    <option value="">Select fruit</option>
+
+    <option value="apple">Buy apple</option>
+
+    <option value="banana">Buy banana</option>
+
+    <option value="orange">Buy orange</option>
+
+  </select>
+
+ 
+
+  <script>
+
+     function callOnChange(){
+
+      console.log('selected value: ' + elem.value);
+
+     }
+
+     elem.onchange = callOnChange; // реагируем на событие change
+
+  </script>
+
+</body>
+
+</html>
+
+ 
+
+Результат кода если выбрать к примеру orange:
+
+
+
+Практические примеры DOM и событии
+
+Давайте в этом разделе рассмотрим несколько примеров с использованием всех пройденных тем чтобы закрепить их.
+
+Сперва давайте сделаем мини проект для аутентификации пользователя. У нас будет поле ввода для логина и пароля. Javascript должен проверять ввел ли пользователь эти данные. Если пользователь нажимает на кнопку аутентификации не заполнив какое-нибудь поле или поля то выведем сообщение об ошибке. 
+
+Далее у нас будет массив объектов пользователей и при аутентификации пользователя будем сверять данные которые он ввел с нашим массивом пользователей и соответственно выведем информацию об успешной либо неуспешной аутентификации. Давайте к примеру:
+
+ 
+
+index.html
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+        <title>Form events</title>
+
+        <style>
+
+                .invalid {border-color: red;}
+
+                .error {height: 25px; color: red;}
+
+                form {text-align: center; margin-top: 50px;}
+
+        </style>
+
+</head>
+
+<body>
+
+        <form id="myform">
+
+                Login: <input type="text" name="login">
+
+                <div id="loginError" class="error"></div>
+
+                Password: <input type="password" name="password">
+
+                <div id="passwordError" class="error"></div>
+
+                <button type="button" onclick="checkUser()">Login</button>
+
+        </form>
+
+ 
+
+        <script>
+
+                // возмем уже существующий массив объектов с пользователями
+
+                let usersArray = [
+
+                        {name: 'Ilyas', login: 'ileke', password: 'ileke123'},
+
+                        {name: 'Aibek', login: 'aieke', password: 'aieke123'},
+
+                        {name: 'Eldar', login: 'eleke', password: 'eleke123'}
+
+                ];
+
+ 
+
+                let logField = myform.elements.login; // logField = элемент ввода логина
+
+                let passField = myform.elements.password; // passField = элемент ввода пароля
+
+ 
+
+                //вызывается при нажатии на кнопку
+
+                function checkUser(){
+
+                        if(logField.value == '') // если логин не ввели
+
+                                loginError.innerHTML = 'Please enter login';
+
+ 
+
+                        if(passField.value == '') // если пароль не ввели
+
+                                passwordError.innerHTML = 'Please enter password';
+
+ 
+
+                        if(logField.value != '' && passField.value != ''){
+
+                                let authenticated = false;
+
+ 
+
+                                for(let u of usersArray){
+
+                                        // если введенные данные есть в нашем массиве
+
+                                        if(logField.value == u.login && passField.value == u.password){
+
+                                                alert('Welcome: ' + u.name); // выводим Welcome + имя пользователя
+
+                                                authenticated = true;
+
+                                                break;
+
+                                        }
+
+                                }
+
+ 
+
+                                // если введенных данных не в нашем массиве 
+
+                                if(!authenticated)
+
+                                        alert('No user with such login and password');
+
+ 
+
+                                // очищаем элементы ввода
+
+                                logField.value = '';
+
+                                passField.value = '';
+
+                        }
+
+                }
+
+ 
+
+                // при фокусировке на элемент ввода нужно убирать сообщение об ошибке
+
+                function checkFields(){
+
+                        if(event.target == logField)
+
+                                loginError.innerHTML = '';
+
+ 
+
+                        if(event.target == passField)
+
+                                passwordError.innerHTML = '';
+
+                }
+
+ 
+
+                // реагируем на события фокусировки
+
+                logField.onfocus = checkFields;
+
+                passField.onfocus = checkFields;
+
+        </script>
+
+</body>
+
+</html>
+
+ 
+
+Результат кода, при открытии проекта на браузере мы увидим:
+
+
+
+Далее если сразу нажать на кнопку Login:
+
+
+
+ 
+
+Как мы видим сработала функция checkUser(строка №32), где мы написали показать сообщения если поля пустые. Далее я поставлю фокус на поле Login:
+
+
+
+ 
+
+Как мы видим под этим полем сообщение исчезло, так как при фокусировке срабатывает функция checkFields(строка №62), которая очищает сообщение под полем. Далее если написать неверные данные и нажать на Login:
+
+
+
+А теперь введем данные пользователя, которые есть в нашем массиве(строка №22):
+
+
+
+И видим сообщение Welcome Aibek. Aibek потому что мы ввели его данные(логин пароль).
+
+ 
+
+Далее давайте сделаем еще один мини проект, где у нас также будет массив объектов(фруктов). Также можно добавлять и удалять фрукты с массива. Но при каждом изменении массива мы должно заново перерисовывать основной div с фруктами. Давайте сразу к проекту:
+
+ 
+
+index.html
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+        <title>Form events</title>
+
+</head>
+
+<body>
+
+        <button onclick="addFruit()">Add fruit</button>
+
+        <button onclick="removeFruit()">Remove fruit</button>
+
+ 
+
+        <!-- в этом DIV мы будем выводить все фрукты -->
+
+        <div id="fruits"></div>
+
+ 
+
+        <script>
+
+                // наш массив фруктов
+
+                let fruitsArray = [
+
+                        {name: 'apple', kilo: 10},
+
+                        {name: 'banana', kilo: 7},
+
+                        {name: 'orange', kilo: 12}
+
+                ];
+
+ 
+
+                // в начале сразу выведем фрукты из массива
+
+                for(let f of fruitsArray){
+
+                        // для каждого фрукта создается DIV
+
+                        let div = document.createElement('div');
+
+                        // и внутри DIV мы выводим наименование фрукта и кол. кг
+
+                        div.innerHTML = '<p>' + f.name + ' - ' + f.kilo + 'kg </p>'
+
+                        div.className = "fruitDiv";
+
+                        // наш DIV вставляем в конец основного div(fruits)
+
+                        fruits.append(div);
+
+                }
+
+ 
+
+                // вызывается при нажатии на Add fruit
+
+                function addFruit(){
+
+                        // пользователь вводит данные нового фрукта
+
+                        let name = prompt('enter fruit name: ');
+
+                        let kilo = prompt('enter how many kilo: ');
+
+ 
+
+                        // создается новый объект фрукта
+
+                        let newFruit = {};
+
+                        newFruit.name = name;
+
+                        newFruit.kilo = parseInt(kilo);
+
+ 
+
+                        // добавляет объект в массив
+
+                        fruitsArray.push(newFruit);
+
+                        // вызываем функцию чтоб обновить вывод фруктов после изменения массива
+
+                        updateFruitList();
+
+                }
+
+ 
+
+                // вызывается при нажатии на Remove fruit
+
+                function removeFruit(){
+
+                        // просим ввести наименование фрукта для удаления
+
+                        let name = prompt('enter fruit name to remove: ');
+
+ 
+
+                        // ищем в массиве фрукт и удаляем(если найдем)
+
+                        for(let i=0; i<fruitsArray.length; i++){
+
+                                if(fruitsArray[i].name == name){
+
+                                        fruitsArray.splice(i,1);
+
+                                        break;
+
+                                }
+
+                        }
+
+ 
+
+                        // вызываем функцию чтоб обновить вывод фруктов после изменения массива
+
+                        updateFruitList();
+
+                }
+
+ 
+
+                // функция которая обновляет вывод фруктов
+
+                function updateFruitList(){
+
+                        // сперва удаляем основной DIV(fruits)
+
+                        fruits.remove();
+
+ 
+
+                        // заново создаем уже пустой DIV(fruits)
+
+                        let fruitsDiv = document.createElement('div');
+
+                        fruitsDiv.id = 'fruits';
+
+ 
+
+                        // и в DIV fruits обратно вставляем данные о фруктах
+
+                        for(let f of fruitsArray){
+
+                                let div = document.createElement('div');
+
+                                div.innerHTML = '<p>' + f.name + ' - ' + f.kilo + 'kg </p>'
+
+                                div.className = "fruitDiv";
+
+                                fruitsDiv.append(div);
+
+                        }
+
+ 
+
+                        // вставляем созданный DIV(fruits) в конец body
+
+                        document.body.append(fruitsDiv);
+
+                }
+
+        </script>
+
+</body>
+
+</html>
+
+ 
+
+Результат кода, при открытии проекта на браузере мы увидим:
+
+
+
+ 
+
+Из массива(строка №15) уже выведены все фрукты. Далее после нажатия на Add fruit:
+
+
+
+ 
+
+Мы вводим наименование и количество килограммов нового фрукта, и далее видим что он добавился:
+
+
+
+ 
+
+Далее пробуем удалить фрукт нажав на Remove fruit:
+
+
+
+ 
+
+Вводим имя фрукта для удаления:
+
+
+
+И видим что он удалился.
