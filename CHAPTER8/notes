@@ -1,0 +1,28 @@
+//Добавление
+  // let elem = document.createElement('div');
+  // elem.className = "alert";
+  // elem.innerHTML = '<h2>Hello</h2>';
+  // // document.body.prepend(elem);
+  // // document.body.append(elem);
+  // second.before(elem);
+  // second.after(elem);
+
+  // // Удаление
+  // first.remove();
+
+
+  // let items = document.querySelector('ul > li:first-child')
+  // items.remove();
+
+
+  // let items = document.querySelectorAll('li');
+  // for (let item of items) {
+  //   item.remove();
+  // }
+
+
+  // if (first.classList.contains('clrRed')) {
+  //   first.classList.add('size');
+  // }
+  // Toggle Добавляет класс если нет, удаляет если есть 
+  // second.classList.toggle('clrRed');
