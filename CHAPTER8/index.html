@@ -8,123 +8,61 @@
 </head>
 <style>
   body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
   }
-  form {
-    padding: 0 15px;
-    width: 350px;
-    
-    
-  }
-  .title {
-    margin-bottom: 3px;
-    margin-top: 10px;
-  }
-  .error {
-    margin: 5px 0;
-    color: red;
-    font-size: 10px;
-  }
-  .btn {
-    margin-top: 10px;
-    
-    padding: 10px;
-    width: 100px;
-  }
-
 </style>
+<body style="display: flex; justify-content: center; margin-top: 10%;">
+  <div style="width: 850px; display: flex; justify-content: space-between;">
+    <div>
+      <p style="margin-bottom: 5px; margin-top: 0;">Введите сумму</p> 
+      <input type="number" id="cash" style="width: 150px; height: 20px;">
+      <select name="" id="select">
+        <option value="">Валюта</option>
+        <option id="kzt">KZT</option>
+        <option id="USD">USD</option>
+        <option id="EUR">EUR</option>
+      </select>
+    </div>
+    <div>
+      <p style="margin-bottom: 5px; margin-top: 0;">KZT (tenge)</p>
+      <div id="kztRes" style="width: 158px; height: 25px; background: #d9d9d9; padding-left: 10px; font-weight: 500;">0</div>
+    </div>
+    <div>
+      <p style="margin-bottom: 5px; margin-top: 0;">USD (dollar)</p>
+      <div id="usdRes" style="width: 158px; height: 25px; background: #d9d9d9; padding-left: 10px; font-weight: 500;">0</div>
+    </div>
+    <div>
+      <p style="margin-bottom: 5px; margin-top: 0;">EUR (euro)</p>
+      <div id="eurRes" style="width: 158px; height: 25px; background: #d9d9d9; padding-left: 10px; font-weight: 500;">0</div>
+    </div>
+  </div>
 
-<body>
-  <form id="form"  action="">
-    <div class="title">Email</div>
-    <input type="Email" id="emailInput">
-    <div id="emailError" class="error">
-      </div>
-
-    <div class="title">Password</div>
-    <input type="password" id="pass">
-    <div id="passError" class="error">
-      </div>
-
-    <div class="title">Retype password</div>
-    <input type="password" id="rePass">
-    <div id="rePassError" class="error">
-      </div>
-    <div></div>
-    
-    <input class="btn" id="btn" type="button" value="REGISTER">
-  </form>
-<script>
-  let users = [
-    {email: 'user1@example.com', password: 'password1'},
-    {email: 'user2@example.com', password: 'password2'},
-    {email: 'user3@example.com', password: 'password3'},
-    {email: 'user4@example.com', password: 'password4'},
-    {email: 'user5@example.com', password: 'password5'}
-  ];
-  let user = {};
-  function callOnBlur(){
-    if (emailInput.value != 'enter email') {
-      let k1 = true;
-      let k2 = true;
-      for (let u of users){
-        if (u.email === emailInput.value) {
-          k1 = false;
-        }
-      }
-      if (!emailInput.value.includes('@'&&'.')) {
-        k2 = false;
-      } else {
-        emailError.innerText = '';
-      }
-      if (!k1) {
-        emailError.innerText = `${emailInput.value} is already use, enter other email`;
-        emailInput.value = '';
-      }
-      if (!k2) {
-        emailError.innerText = 'Wrong format';
+  <script>
+    const usdPurch = 429;
+    const usdSale = 431;
+    const euroPurch = 507;
+    const euroSale = 509;
+    function changeCurr(){
+      switch (select.value) {
+        case('KZT'):
+        kztRes.innerHTML = '-';
+        usdRes.innerHTML = (cash.value/usdPurch).toFixed(2);
+        eurRes.innerHTML = (cash.value/euroPurch).toFixed(2);
+        break;
+        case('USD'):
+        usdRes.innerHTML = '-';
+        eurRes.innerHTML = '-';
+        kztRes.innerHTML = (cash.value*usdSale).toFixed(2);
+        break;
+        case('EUR'):
+        usdRes.innerHTML = '-';
+        kztRes.innerHTML = '-';
+        eurRes.innerHTML = (cash.value*euroSale).toFixed(2);
+        break;
       }
     }
-  }
-
-  function callOnFocus(){
-    if (!k1) {
-      emailInput.value = '';
-    }
-  }
-
-  function passBlur(){
-      if (emailInput.value=='' || emailError.innerText != '') {
-        emailError.innerText = 'Enter right email';
-        pass.value = '';
-        emailInput.focus();
-      }
-      if (emailInput.value!='' && emailError.innerText == '' && pass.value.length<6) {
-        passError.innerText = 'Password length at least must be 6 symbols';
-        pass.value = '';
-      } else {
-        passError.innerText = '';
-      }
-  }
-  
-  function submit(){
-    if (pass.value === rePass.value) {
-      rePassError.innerText = '';
-    } else {
-      rePassError.innerText = 'Password are not same';
-    }
-    user.email = emailInput.value;
-    user.password = pass.value;
-    users.push(user);
-    console.log('Success');
-  }
-  
-  emailInput.onblur = callOnBlur;
-  emailInput.onfocus = callOnFocus;
-  pass.onblur = passBlur;
-  rePass.onblur = submit;
-  btn.addEventListener('click', submit());
-
-</script>
+    select.onchange = changeCurr;
+  </script>
 </body>
 </html>
