@@ -7,239 +7,124 @@
   <title>Document</title>
 </head>
 <style>
-  /* 8-4 */
-  /* .container {
-    padding: 50px;
-    background-color:rgb(255, 232, 232);
-    max-width: 776px;
-    margin: 0 auto ;
+  body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
-  img {
-    width: 100%;
+  form {
+    padding: 0 15px;
+    width: 350px;
+    
+    
   }
-  .btns {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
+  .title {
+    margin-bottom: 3px;
+    margin-top: 10px;
   }
-  button {
-    border-style: none;
-    background-color:rgb(0, 106, 39);
-    color: white;
-    width: 90px;
-    height: 25px;
-    margin: 0 12px;
-    border-radius: 3px;
+  .error {
+    margin: 5px 0;
+    color: red;
+    font-size: 10px;
   }
-  button:hover {
-    background-color:rgb(0, 159, 58);
-  } */
-  /* 8-5 */
-  .Wrapper {
-    padding: 15px;
-    background-color:antiquewhite;
+  .btn {
+    margin-top: 10px;
+    
+    padding: 10px;
+    width: 100px;
   }
-  .mainImg {
-    display: flex;
-    justify-content: center;
-  }
-  .mainImg img {
-    width: 700px;
-  }
-  .gallery {
-    display: flex;
-    justify-content: center;
-  }
-  .gallery img {
-    width: 150px;
-    margin: 15px;
-  }
+
 </style>
 
 <body>
+  <form id="form"  action="">
+    <div class="title">Email</div>
+    <input type="Email" id="emailInput">
+    <div id="emailError" class="error">
+      </div>
 
-  <!-- 8-3
-  <h2>Enter Your Bank Card Details</h2>
-  <form id="myForm">
-    <label>Card Number:</label>
-    <input type="text" name="cardNumber1" size="4">
-    <input type="text" name="cardNumber2" size="4">
-    <input type="text" name="cardNumber3" size="4">
-    <input type="text" name="cardNumber4" size="4"> <br><br>
-    <label>Full Name:</label>
-    <input type="text" name="fullName"> <br><br>
-    <label>CVV:</label>
-    <input type="password" name="cvv"> <br><br>
-    <button type="button" onclick="check()">Submit</button> <br><br>
-    <div id="result"></div>
-  </form> -->
-  <!-- 8-4 
-  <div class="container">
-    <img id="image" src="img/1.jpg" alt="">
-    <div class="btns">
-      <button onclick="back()">BACK</button>
-      <button onclick="next()">NEXT</button>
-    </div>
-  </div> -->
-  <div class="Wrapper">
-    <div class="mainImg">
-      <img id="i0" src="img/1.jpg" alt="">
-    </div>
-    <div class="gallery">
-      <img id="i1" src="img/1.jpg" onclick="click1()">
-      <img id="i2" src="img/2.jpg" onclick="click2()">
-      <img id="i3" src="img/3.jpg" onclick="click3()">
-      <img id="i4" src="img/4.jpg" onclick="click4()">
-    </div>
-  </div>
-  <script>
-    // function boo(login, password) { 
-    //   for (let i=0; i<arr.length; i++) { 
-    //     if (arr[i]["login"]===log && arr[i]["password"]===pass) { 
-    //       form.style.display = 'none';
-    //       auth.style.display = 'block';
-    //       console.log("true") 
-    //     } else { 
-    //       login.style.borderColor = 'red';
-    //       password.style.borderColor = 'red';
-    //       console.log("false")
-    //     }
-    //   }
-    // }
-      
-    // buttonPlus.addEventListener('click', () => numbers("+"));
-    // buttonMinus.addEventListener('click', () => numbers("-"));
-   
-    // function numbers(sym) {
-    //   let num = parseInt(number.innerText);
-    //   if (sym==="+") {
-    //     num++;
-    //     number.innerText = num;
-    //   }
-    //   if (sym==="-") {
-    //     num--;
-    //     number.innerText = num;
-    //   }
-    // }
+    <div class="title">Password</div>
+    <input type="password" id="pass">
+    <div id="passError" class="error">
+      </div>
+
+    <div class="title">Retype password</div>
+    <input type="password" id="rePass">
+    <div id="rePassError" class="error">
+      </div>
+    <div></div>
     
-
-
-
-      ////8-3
-  // const cards = [
-  //   { cardNumber: "1234123412341234", fullName: "John Doe", cvv: "123" },
-  //   { cardNumber: "2345678923456789", fullName: "Jane Doe", cvv: "456" },
-  //   { cardNumber: "3456789034567890", fullName: "Jim Brown", cvv: "789" }
-  // ];
-  
-  // let cardNum1 = myForm.elements.cardNumber1;
-  // let cardNum2 = myForm.elements.cardNumber2;      
-  // let cardNum3 = myForm.elements.cardNumber3;
-  // let cardNum4 = myForm.elements.cardNumber4;
-  // let name = myForm.elements.fullName;
-  // let cvv = myForm.elements.cvv;
-
-  // function check(){
-  //     if (cardNum1.value === '' && cardNum2.value === '' &&
-  //       cardNum3.value === '' && cardNum4.value === '') {
-  //     result.innerText = 'Enter card number';
-  //   } else if (name.value === '') {
-  //     result.innerHTML = 'Enter your name';
-  //   } else if (cvv.value === '') {
-  //     result.innerHTML = 'Enter cvv code';
-  //   } else if (cardNum1.value != '' && 
-  //              cardNum2.value != '' &&
-  //              cardNum3.value != '' && 
-  //              cardNum4.value != '' &&
-  //              name.value != '' &&
-  //              cvv.value != '') { 
-  //               let auth = false;
-  //               for (let u of cards) {
-  //                 if (cardNum1.value+cardNum2.value+cardNum3.value+
-  //                     cardNum4.value === u.cardNumber &&
-  //                     name.value === u.fullName && cvv.value === u.cvv){
-  //                       auth = true;
-  //                       result.innerText = "Welcome " + u.fullName;
-  //                       break;
-  //                     }
-  //                     if (!auth) {
-  //                       cardNum1.focus();
-  //                       result.innerText = 'No user with such login and password';
-  //                     }
-  //                     cardNum1.value = '';
-  //                     cardNum2.value = '';      
-  //                     cardNum3.value = '';
-  //                     cardNum4.value = '';
-  //                     name.value = '';
-  //                     cvv.value = '';
-  //               }
-  //              }
-  // }
-  // function checkFields(){
-  //   if (event.target == cardNum1 ||
-  //       event.target == cardNum2 ||
-  //       event.target == cardNum3 ||
-  //       event.target == cardNum4 ||
-  //       event.target == name ||
-  //       event.target == cvv) result.innerText = '';
-  // }
-  // cardNum1.onfocus = checkFields;
-  // cardNum2.onfocus = checkFields;
-  // cardNum3.onfocus = checkFields;
-  // cardNum4.onfocus = checkFields;
-  // name.onfocus = checkFields;
-  // cvv.onfocus = checkFields;
-  
-  
-  
-  // let num = 0;
-
-  // let images = [
-  //   "1", 
-  //   "2", 
-  //   "3", 
-  //   "4"
-  // ]
-  
-  // function back(){
-  //   num--;
-  //   if (num === -1) num = images.length-1;
-  //   image.src='img/'+images[num]+'.jpg';
-  // } 
-  // function next(){
-  //   num++;
-  //   if (num === images.length) num = 0;
-  //   image.src='img/'+images[num]+'.jpg';
-  // } 
-  
-
-  //8-5
-  const gallery = document.querySelector(".gallery");
-  const images = gallery.querySelectorAll("img");
-  const mainImg = document.querySelector("#i0");
-
-  const imgArr = [];
-
-  images.forEach(img => {
-    imgArr.push(img.src);
-  });
-
-  function clickImage(index) {
-    mainImg.src = imgArr[index];
+    <input class="btn" id="btn" type="button" value="REGISTER">
+  </form>
+<script>
+  let users = [
+    {email: 'user1@example.com', password: 'password1'},
+    {email: 'user2@example.com', password: 'password2'},
+    {email: 'user3@example.com', password: 'password3'},
+    {email: 'user4@example.com', password: 'password4'},
+    {email: 'user5@example.com', password: 'password5'}
+  ];
+  let user = {};
+  function callOnBlur(){
+    if (emailInput.value != 'enter email') {
+      let k1 = true;
+      let k2 = true;
+      for (let u of users){
+        if (u.email === emailInput.value) {
+          k1 = false;
+        }
+      }
+      if (!emailInput.value.includes('@'&&'.')) {
+        k2 = false;
+      } else {
+        emailError.innerText = '';
+      }
+      if (!k1) {
+        emailError.innerText = `${emailInput.value} is already use, enter other email`;
+        emailInput.value = '';
+      }
+      if (!k2) {
+        emailError.innerText = 'Wrong format';
+      }
+    }
   }
 
-  document.querySelector("#i1").addEventListener("click", function () {
-    clickImage(0);
-  });
-  document.querySelector("#i2").addEventListener("click", function () {
-    clickImage(1);
-  });
-  document.querySelector("#i3").addEventListener("click", function () {
-    clickImage(2);
-  });
-  document.querySelector("#i4").addEventListener("click", function () {
-    clickImage(3);
-  });
+  function callOnFocus(){
+    if (!k1) {
+      emailInput.value = '';
+    }
+  }
+
+  function passBlur(){
+      if (emailInput.value=='' || emailError.innerText != '') {
+        emailError.innerText = 'Enter right email';
+        pass.value = '';
+        emailInput.focus();
+      }
+      if (emailInput.value!='' && emailError.innerText == '' && pass.value.length<6) {
+        passError.innerText = 'Password length at least must be 6 symbols';
+        pass.value = '';
+      } else {
+        passError.innerText = '';
+      }
+  }
+  
+  function submit(){
+    if (pass.value === rePass.value) {
+      rePassError.innerText = '';
+    } else {
+      rePassError.innerText = 'Password are not same';
+    }
+    user.email = emailInput.value;
+    user.password = pass.value;
+    users.push(user);
+    console.log('Success');
+  }
+  
+  emailInput.onblur = callOnBlur;
+  emailInput.onfocus = callOnFocus;
+  pass.onblur = passBlur;
+  rePass.onblur = submit;
+  btn.addEventListener('click', submit());
+
 </script>
 </body>
 </html>
