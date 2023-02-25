@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color:rgb(36, 36, 36);
+    padding: 25px 15%;
+  }
+  .item {
+    font-size: small; 
+    color:white; 
+    border-radius:5px; 
+    padding:15px; 
+    margin: 10px; 
+    background-color:rgb(83, 77, 142);
+  }
+  .btn {
+    font-size: small; 
+    padding: 2px 5px; 
+    margin-top: 15px;
+  }
+  table {
+    width: 90%;
+    font-size: small;
+    text-align: left;
+    margin: 15px;
+  }
+  
+</style>
+</head>
+
+<body>
+  <div style="display:flex; justify-content: space-around;">
+    <div style="border-radius: 5px; width: 400px; height: 100%; background: #373737;">
+      <p style="color:white; text-align: center; background-color:rgb(83, 77, 142)">Products</p>
+      <div class="item">
+        <span id="idIPhone_12_Pro">IPhone 12 Pro</span> - <span id="id1200_USD">1200 USD</span> <br> 
+        6 GB RAM, Memory 128 GB, double front back camera <br>
+        <input class="btn" type="button" value="+ ADD TO BASKET" id="idIPhone_12_Pro_btn">
+      </div>
+      <div class="item">
+        <span id="idXIAMOR_REDMI_NOTE_8">XIAMOR REDMI NOTE 8</span> - <span id="id250_USD">250 USD</span> <br>
+        6 GB RAM, Memory 64 GB, 3 cameras in back <br>
+        <input class="btn" type="button" value="+ ADD TO BASKET" id="idXIAMOR_REDMI_NOTE_8_btn">
+      </div>
+      <div class="item">
+        <span id="idASUS_Tuf_Gaming_Pro">ASUS Tuf Gaming Pro</span> - <span id="id1500_USD">1500 USD</span> <br>
+        24 GB RAM, SSD 1 ТВ, RX Radeon <br>
+        <input class="btn" type="button" value="+ ADD TO BASKET" id="idASUS_Tuf_Gaming_Pro_btn">
+      </div>
+      <div class="item">
+        <span id="idSamsung_Galaxy_Note_13">Samsung Galaxy Note 13</span> - <span id="id999_USD">999 USD</span> <br>
+        4 GB RAM, Memory 256 GB, front-back cameras <br>
+        <input class="btn" type="button" value="+ ADD TO BASKET" id="idSamsung_Galaxy_Note_13_btn">
+      </div>
+    
+    </div>
+    <div id="blo" style="border-radius: 5px; width: 400px; height: 100%; background: #373737;">
+      <p style="color:white; text-align: center; background-color:rgb(142, 77, 142)">localStorage</p>
+      <table align="center" cellpadding="5" style="color:white" id="idtable"  bordercolor="white" border="1" width="100%" frame="void" rules="rows"><tr><th>Name</th><th>Price</th><th>Remove</th></tr></table>  
+    </div>
+  </div>
+
+  <script>
+    let arr = [];
+    let table = document.getElementById('idtable');
+    let row;
+    let cellName;
+    let cellPrice;
+    let cellRemove;
+
+    if (localStorage.arr) {
+        arr = JSON.parse(localStorage.arr);
+        for (let u of arr) {
+          row = idtable.insertRow(-1); // Вставляем новую строку в конец таблицы
+          cellName = row.insertCell(0); // Вставляем ячейку для имени товара
+          cellPrice = row.insertCell(1); // Вставляем ячейку для цены товара
+          cellRemove = row.insertCell(2); // Вставляем ячейку для кнопки удаления
+
+          cellName.innerHTML = u.name; // Задаем значение имени товара
+          cellPrice.innerHTML = u.price; // Задаем значение цены товара
+          cellRemove.innerHTML = '<input class="btn" style="margin: 0;" type="button" id="remove" value="- REMOVE">';
+      }
+    }
+    
+    function addProduct(input){
+      let product = {};
+
+      switch (input.id) {
+        case 'idIPhone_12_Pro_btn': 
+          product.name = document.getElementById("idIPhone_12_Pro").innerText;
+          product.price = document.getElementById("id1200_USD").innerText;
+          break;
+        case 'idXIAMOR_REDMI_NOTE_8_btn': 
+          product.name = document.getElementById("idXIAMOR_REDMI_NOTE_8").innerText;
+          product.price = document.getElementById("id250_USD").innerText;
+          break;
+        case 'idASUS_Tuf_Gaming_Pro_btn': 
+          product.name = document.getElementById("idASUS_Tuf_Gaming_Pro").innerText;
+          product.price = document.getElementById("id1500_USD").innerText;
+          break;
+        case 'idSamsung_Galaxy_Note_13_btn': 
+          product.name = document.getElementById("idSamsung_Galaxy_Note_13").innerText;
+          product.price = document.getElementById("id999_USD").innerText;
+          break;
+      }
+      arr.push(product);
+      updateStorage();
+      updateProducts();
+    }
+    function updateStorage(){
+      localStorage.arr = JSON.stringify(arr);
+    }
+    function updateProducts(){
+      idtable.remove();
+      blo.innerHTML = '<p style="color:white; text-align: center; background-color:rgb(142, 77, 142)">localStorage</p><table align="center" cellpadding="5" style="color:white" id="idtable"  bordercolor="white" border="1" width="100%" frame="void" rules="rows"><tr><th>Name</th><th>Price</th><th>Remove</th></tr></table>';
+      let i = 1;
+      if (localStorage.arr) {
+        arr2 = JSON.parse(localStorage.arr);
+        for (let u of arr2) {
+          row = idtable.insertRow(-1); // Вставляем новую строку в конец таблицы
+          cellName = row.insertCell(0); // Вставляем ячейку для имени товара
+          cellPrice = row.insertCell(1); // Вставляем ячейку для цены товара
+          cellRemove = row.insertCell(2); // Вставляем ячейку для кнопки удаления
+
+          cellName.innerHTML = u.name; // Задаем значение имени товара
+          cellPrice.innerHTML = u.price; // Задаем значение цены товара
+          cellRemove.innerHTML = '<input class="btn" style="margin: 0;" type="button" name="remove" value="- REMOVE">';
+      }
+      }
+    }
+    function remProduct(){
+      
+    }
+
+    idIPhone_12_Pro_btn.addEventListener('click', () => addProduct(idIPhone_12_Pro_btn));
+    idXIAMOR_REDMI_NOTE_8_btn.addEventListener('click', () => addProduct(idXIAMOR_REDMI_NOTE_8_btn));
+    idASUS_Tuf_Gaming_Pro_btn.addEventListener('click', () => addProduct(idASUS_Tuf_Gaming_Pro_btn));
+    idSamsung_Galaxy_Note_13_btn.addEventListener('click', () => addProduct(idSamsung_Galaxy_Note_13_btn));
+    remove.addEventListener('click', remProduct());
+  </script>
+</body>
+</html>
